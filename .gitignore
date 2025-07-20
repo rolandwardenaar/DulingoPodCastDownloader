@@ -1,2 +1,5 @@
 # Ignore Visual Studio files
 .vs/
+/bin/Debug/net9.0/Podcasts
+/obj
+/bin/Debug/net9.0
