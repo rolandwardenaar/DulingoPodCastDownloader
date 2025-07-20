@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36310.24 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuoLingoRssApp", "DuoLingoRssApp.csproj", "{6F7A3EBF-2A90-4D24-BC81-10C68AF8FE9A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6F7A3EBF-2A90-4D24-BC81-10C68AF8FE9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F7A3EBF-2A90-4D24-BC81-10C68AF8FE9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F7A3EBF-2A90-4D24-BC81-10C68AF8FE9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F7A3EBF-2A90-4D24-BC81-10C68AF8FE9A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3BD4F4EE-1AB1-45C7-8184-3FF05D08EDF6}
+	EndGlobalSection
+EndGlobal
