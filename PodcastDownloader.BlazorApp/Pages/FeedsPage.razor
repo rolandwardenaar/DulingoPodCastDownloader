@@ -1,0 +1,85 @@
+@page "/feeds"
+@using PodcastDownloader.Library
+
+<h3 class="mb-4">Podcast Feeds</h3>
+
+<button class="btn btn-primary mb-3" @onclick="ShowAddFeed">Add Feed</button>
+
+@if (IsAdding)
+{
+    <EditForm Model="NewFeed" OnValidSubmit="AddFeed" class="mb-3">
+        <div class="row g-2 align-items-center">
+            <div class="col">
+                <InputText class="form-control" @bind-Value="NewFeed.Name" placeholder="Name" />
+            </div>
+            <div class="col">
+                <InputText class="form-control" @bind-Value="NewFeed.Url" placeholder="URL" />
+            </div>
+            <div class="col-auto">
+                <div class="form-check">
+                    <InputCheckbox class="form-check-input" @bind-Value="NewFeed.IsLocal" />
+                    <label class="form-check-label">Local</label>
+                </div>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-success me-2">Save</button>
+                <button type="button" class="btn btn-secondary" @onclick="CancelAdd">Cancel</button>
+            </div>
+        </div>
+    </EditForm>
+}
+
+<table class="table table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Name</th>
+            <th>URL</th>
+            <th>Local</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var feed in Feeds)
+        {
+            <tr>
+                <td>@feed.Name</td>
+                <td>@feed.Url</td>
+                <td>@feed.IsLocal</td>
+                <td>
+                    <button class="btn btn-sm btn-warning me-1" @onclick="() => EditFeed(feed)">Edit</button>
+                    <button class="btn btn-sm btn-danger me-1" @onclick="() => DeleteFeed(feed)">Delete</button>
+                    <button class="btn btn-sm btn-info" @onclick="() => TestFeed(feed)">Test</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (IsEditing)
+{
+    <EditForm Model="EditFeedModel" OnValidSubmit="SaveEdit" class="mb-3">
+        <div class="row g-2 align-items-center">
+            <div class="col">
+                <InputText class="form-control" @bind-Value="EditFeedModel.Name" placeholder="Name" />
+            </div>
+            <div class="col">
+                <InputText class="form-control" @bind-Value="EditFeedModel.Url" placeholder="URL" />
+            </div>
+            <div class="col-auto">
+                <div class="form-check">
+                    <InputCheckbox class="form-check-input" @bind-Value="EditFeedModel.IsLocal" />
+                    <label class="form-check-label">Local</label>
+                </div>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-success me-2">Update</button>
+                <button type="button" class="btn btn-secondary" @onclick="CancelEdit">Cancel</button>
+            </div>
+        </div>
+    </EditForm>
+}
+
+@if (!string.IsNullOrEmpty(TestResult))
+{
+    <div class="alert alert-info">@TestResult</div>
+}

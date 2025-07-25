@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36310.24 d17.14
+VisualStudioVersion = 17.14.36310.24
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuoLingoRssApp", "DuoLingoRssApp.csproj", "{6F7A3EBF-2A90-4D24-BC81-10C68AF8FE9A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuoLingoRssApp", "DuoLingoRssApp\DuoLingoRssApp.csproj", "{686105E1-0385-4D77-99BC-0E1EADB580A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PodcastDownloader.BlazorApp", "PodcastDownloader.BlazorApp\PodcastDownloader.BlazorApp.csproj", "{91A337E9-45AD-D8F8-B772-2DB6B1531F50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PodcastDownloader.Library", "..\PodcastDownloader.Library\PodcastDownloader.Library.csproj", "{C55543A1-6A3A-4A6D-815E-A9A56636EDF2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6F7A3EBF-2A90-4D24-BC81-10C68AF8FE9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6F7A3EBF-2A90-4D24-BC81-10C68AF8FE9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6F7A3EBF-2A90-4D24-BC81-10C68AF8FE9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6F7A3EBF-2A90-4D24-BC81-10C68AF8FE9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{686105E1-0385-4D77-99BC-0E1EADB580A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{686105E1-0385-4D77-99BC-0E1EADB580A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{686105E1-0385-4D77-99BC-0E1EADB580A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{686105E1-0385-4D77-99BC-0E1EADB580A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91A337E9-45AD-D8F8-B772-2DB6B1531F50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91A337E9-45AD-D8F8-B772-2DB6B1531F50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91A337E9-45AD-D8F8-B772-2DB6B1531F50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91A337E9-45AD-D8F8-B772-2DB6B1531F50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C55543A1-6A3A-4A6D-815E-A9A56636EDF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C55543A1-6A3A-4A6D-815E-A9A56636EDF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C55543A1-6A3A-4A6D-815E-A9A56636EDF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C55543A1-6A3A-4A6D-815E-A9A56636EDF2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
