@@ -1,5 +1,42 @@
-# Ignore Visual Studio files
+# Visual Studio
 .vs/
-/bin/Debug/net9.0/Podcasts
-/obj
-/bin/Debug/net9.0
+# Build results
+[Dd]ebug/
+[Rr]elease/
+[Bb]uild/
+# NUGET packages
+*.nupkg
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+# Mono Auto Generated Files
+mono_crash.*
+# Windows image file caches
+Thumbs.db
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+# DotCover
+*.dotCover
+# Rider
+.idea/
+*.sln.iml
+# VS Code
+.vscode/
+# Others
+*.log
+*.DS_Store
+*.db
+*.sqlite
+# Blazor
+wwwroot/dist/
+# Publish
+publish/
+# Test results
+TestResults/
+# Node
+node_modules/
+# WebAssembly
+bin/
+obj/
