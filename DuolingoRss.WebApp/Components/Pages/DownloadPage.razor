@@ -77,13 +77,12 @@ else if (SelectedFeedId != null)
 @code {
     private string GetAudioSrc(string fileName)
     {
-        var feed = Feeds.FirstOrDefault(f => f.Id == SelectedFeedId);
-        if (feed == null) return "";
-
-        // Generate the correct path for the audio file
-        var path = $"/Podcasts/{feed.Name}/{fileName}";
-        return path.Replace("\\", "/");
+        // Use the FileController API endpoint to get the file with the full URL
+        var baseUrl = NavigationManager.BaseUri.TrimEnd('/');
+        return $"{baseUrl}/api/File/{fileName}";
     }
+
+    [Inject] private NavigationManager NavigationManager { get; set; } = default!;
 
     private const int PageSize = 10;
     private int CurrentPage = 1;

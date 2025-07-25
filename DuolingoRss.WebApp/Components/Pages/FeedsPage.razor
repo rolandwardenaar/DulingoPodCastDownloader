@@ -116,5 +116,5 @@
 
 @if (!string.IsNullOrEmpty(TestResult))
 {
-    <div class="alert alert-info">@TestResult</div>
+    <div class="alert alert-info" @onclick="(()=>ResetTestResult())" >@TestResult</div>
 }

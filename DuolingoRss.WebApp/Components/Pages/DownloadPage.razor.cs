@@ -3,6 +3,7 @@ using PodcastDownloader.Library;
 using System.Linq;
 using System.Threading;
 using System.IO;
+using System.Web;
 
 namespace DuolingoRss.WebApp.Components.Pages;
 
@@ -101,6 +102,14 @@ public partial class DownloadPage
 
     public void PlayFile(string fileName)
     {
-        SelectedFileToPlay = fileName;
+        var feed = Feeds.FirstOrDefault(f => f.Id == SelectedFeedId);
+        if (feed == null) return;
+
+        // Encode the file name and feed name
+        var encodedFileName = HttpUtility.UrlEncode(fileName);
+        var encodedFeedName = HttpUtility.UrlEncode(feed.Name);
+
+        // Combine feed name and file name in the URL
+        SelectedFileToPlay = $"{encodedFeedName}/{encodedFileName}";
     }
 }

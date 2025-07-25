@@ -52,4 +52,8 @@ public partial class FeedsPage
         TestResult = await DbService.TestFeedUrlAsync(feed.Url, feed.IsLocal);
         StateHasChanged();
     }
+    public void ResetTestResult()
+    {
+        TestResult = "";
+    }
 }

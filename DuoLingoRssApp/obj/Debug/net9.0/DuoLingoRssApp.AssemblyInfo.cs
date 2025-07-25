@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DuoLingoRssApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7fdecd3742c655145f255b8285c7647951aff1a6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fe5cc119927aae83d4d3bc533d8c9b2b75225270")]
 [assembly: System.Reflection.AssemblyProductAttribute("DuoLingoRssApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DuoLingoRssApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
