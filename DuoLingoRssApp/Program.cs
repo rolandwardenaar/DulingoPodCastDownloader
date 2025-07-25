@@ -1,16 +1,26 @@
 ﻿using PodcastDownloader.Library;
+using Microsoft.Extensions.Configuration;
 
 namespace PodcastDownloader
 {
     class Program
     {
         private static readonly HttpClient _client = new HttpClient();
-        private static readonly string _baseDownloadFolder = Path.Combine(Environment.CurrentDirectory, "Podcasts");
+        private static string _baseDownloadFolder;
+        private static string _dbPath;
         private static CancellationTokenSource _cts = new CancellationTokenSource();
-        private static readonly string _dbPath = Path.Combine(Environment.CurrentDirectory, "podcasts.db");
 
         static async Task Main(string[] args)
         {
+            var config = new ConfigurationBuilder()
+                .SetBasePath(Environment.CurrentDirectory)
+                .AddJsonFile("appsettings.json", optional: false)
+                .Build();
+            _baseDownloadFolder = config["DownloadFolder"] ?? "E:/Data/PodCasts/DuolingoApp";
+            _dbPath = config["DatabasePath"] ?? "E:/Data/PodCasts/DuolingoApp/podcasts.db";
+
+            Console.WriteLine($"Download folder: {_baseDownloadFolder}");
+            Console.WriteLine($"Database path: {_dbPath}");
             Console.WriteLine("Welcome to the Spanish Podcast Downloader!");
             Console.WriteLine("Press Ctrl+C to pause and save progress.");
 

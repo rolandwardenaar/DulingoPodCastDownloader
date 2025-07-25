@@ -1,0 +1,108 @@
+@page "/download"
+@using PodcastDownloader.Library
+
+<h3 class="mb-4">Podcast Download Service</h3>
+
+<div class="mb-3">
+    <select class="form-select w-auto d-inline-block me-2" @bind="SelectedFeedId">
+        <option value="">Select a feed...</option>
+        @foreach (var feed in Feeds)
+        {
+            <option value="@feed.Id">@feed.Name</option>
+        }
+    </select>
+    <button class="btn btn-primary me-2" @onclick="StartDownload" disabled="@(IsDownloading || SelectedFeedId == null)">Start Download</button>
+    <button class="btn btn-danger" @onclick="StopDownload" disabled="@(!IsDownloading)">Stop Download</button>
+</div>
+
+@if (IsDownloading)
+{
+    <div class="alert alert-warning">Downloading: <strong>@CurrentFeedName</strong></div>
+    <div class="progress mb-3">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width:100%">@ProgressText</div>
+    </div>
+}
+@if (!IsDownloading && !string.IsNullOrEmpty(ProgressText))
+{
+    <div class="alert alert-info">@ProgressText</div>
+}
+
+@if (DownloadedFiles.Any())
+{
+    <h5 class="mt-4">Downloaded Files</h5>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>File Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var file in PagedFiles)
+            {
+                <tr>
+                    <td>@file</td>
+                    <td>
+                        <button class="btn btn-sm btn-success" @onclick="() => PlayFile(file)">Play</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <nav>
+        <ul class="pagination">
+            <li class="page-item @(CurrentPage == 1 ? "disabled" : "")">
+                <button class="page-link" @onclick="PreviousPage">Previous</button>
+            </li>
+            <li class="page-item @(CurrentPage == TotalPages ? "disabled" : "")">
+                <button class="page-link" @onclick="NextPage">Next</button>
+            </li>
+        </ul>
+    </nav>
+}
+else if (SelectedFeedId != null)
+{
+    <div class="alert alert-secondary">No files downloaded for this feed.</div>
+}
+
+@if (!string.IsNullOrEmpty(SelectedFileToPlay))
+{
+    <div class="mb-3">
+        <audio controls autoplay src="@GetAudioSrc(SelectedFileToPlay)"></audio>
+        <div><strong>Now playing:</strong> @SelectedFileToPlay</div>
+    </div>
+}
+
+@code {
+    private string GetAudioSrc(string fileName)
+    {
+        var feed = Feeds.FirstOrDefault(f => f.Id == SelectedFeedId);
+        if (feed == null) return "";
+
+        // Generate the correct path for the audio file
+        var path = $"/Podcasts/{feed.Name}/{fileName}";
+        return path.Replace("\\", "/");
+    }
+
+    private const int PageSize = 10;
+    private int CurrentPage = 1;
+    private List<string> PagedFiles => DownloadedFiles.Skip((CurrentPage - 1) * PageSize).Take(PageSize).ToList();
+    private int TotalPages => (int)Math.Ceiling((double)DownloadedFiles.Count / PageSize);
+
+    private void NextPage()
+    {
+        if (CurrentPage < TotalPages)
+        {
+            CurrentPage++;
+        }
+    }
+
+    private void PreviousPage()
+    {
+        if (CurrentPage > 1)
+        {
+            CurrentPage--;
+        }
+    }
+}
